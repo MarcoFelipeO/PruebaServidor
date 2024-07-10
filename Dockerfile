@@ -1,5 +1,5 @@
 # Utiliza una imagen base con Maven y JDK preinstalados
-FROM maven:3.8.5-openjdk-21 AS build
+FROM maven:3.8.5-openjdk-17 AS build
 
 # Configura el directorio de trabajo
 WORKDIR /app
@@ -17,7 +17,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Utiliza una imagen más ligera para ejecutar el JAR
-FROM amazoncorretto:21-alpine-jdk
+FROM amazoncorretto:17-alpine-jdk
 
 # Copia el JAR generado desde la etapa de construcción
 COPY --from=build /app/target/*.jar /app.jar
