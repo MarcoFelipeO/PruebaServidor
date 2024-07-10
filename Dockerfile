@@ -1,9 +1,14 @@
+# Etapa de construcción
 FROM ubuntu:latest AS build
 RUN apt-get update
-RUN apt-get install openjdk-21-jdk -y
+RUN apt-get install -y maven openjdk-21-jdk
 COPY . .
-RUN ./gradlew bootJar --no-daemon
-EXPOSE 1010
-COPY --from=build /target/*.jar app.jar
+RUN mvn clean package
 
-ENTRYPOINT ["java","-jar","app.jar"]
+# Etapa final
+FROM ubuntu:latest
+RUN apt-get update
+RUN apt-get install -y openjdk-21-jdk
+COPY --from=build /target/*.jar /app.jar
+EXPOSE 1010
+ENTRYPOINT ["java","-jar","/app.jar"]
