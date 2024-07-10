@@ -6,4 +6,4 @@ RUN ./gradlew bootJar --no-daemon
 EXPOSE 1010
 COPY --from=build /target/*.jar app.jar
 
-ENTRYPOINT["java","-jar","app.jar"]
+ENTRYPOINT ["java","-jar","app.jar"]
