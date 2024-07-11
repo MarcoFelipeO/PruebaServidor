@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.phegondev</groupId>
 	<artifactId>usersmanagementsystem</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>usersmanagementsystem</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -33,6 +33,7 @@
 		<dependency>
 			<groupId>com.mysql</groupId>
 			<artifactId>mysql-connector-j</artifactId>
+			<version>8.0.33</version>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
